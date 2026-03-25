@@ -8,15 +8,15 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Your Name — Fullstack Engineer',
-    template: '%s | Your Name',
+    default: 'Johan — Fullstack Engineer',
+    template: '%s | Johan',
   },
   description: 'Fullstack JavaScript engineer. I build things for the web.',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://yourdomain.com',
-    siteName: 'Your Name',
+    siteName: 'Johan',
   },
 }
 

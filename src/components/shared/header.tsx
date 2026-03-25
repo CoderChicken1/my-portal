@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   SunIcon,
   MoonIcon,
@@ -28,6 +30,7 @@ function ThemeToggle() {
       size="icon"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       aria-label="Toggle theme"
+      className="relative"
     >
       <SunIcon className="h-5 w-5 scale-100 rotate-0 transition-transform dark:scale-0 dark:-rotate-90" />
       <MoonIcon className="absolute h-5 w-5 scale-0 rotate-90 transition-transform dark:scale-100 dark:rotate-0" />
@@ -35,26 +38,49 @@ function ThemeToggle() {
   )
 }
 
+function NavLink({ href, label }: { href: string; label: string }) {
+  const pathname = usePathname()
+  const isActive = href === '/' ? pathname === '/' : pathname.startsWith(href)
+
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'relative px-1 py-0.5 text-sm transition-colors',
+        isActive
+          ? 'text-foreground'
+          : 'text-muted-foreground hover:text-foreground'
+      )}
+    >
+      {label}
+      {isActive && (
+        <motion.span
+          layoutId="nav-indicator"
+          className="bg-foreground absolute -bottom-1 left-0 h-0.5 w-full"
+          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+        />
+      )}
+    </Link>
+  )
+}
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="border-border bg-background/80 sticky top-0 z-50 border-b backdrop-blur-sm">
+    <header className="border-border/50 bg-background/60 sticky top-0 z-50 border-b backdrop-blur-xl">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-bold tracking-tight">
-          Your Name
+        <Link
+          href="/"
+          className="hover:text-primary text-lg font-bold tracking-tight transition-colors"
+        >
+          Johan
         </Link>
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-            >
-              {link.label}
-            </Link>
+            <NavLink key={link.href} {...link} />
           ))}
           <ThemeToggle />
         </div>
@@ -78,25 +104,30 @@ export function Header() {
       </nav>
 
       {/* Mobile menu */}
-      <div
-        className={cn(
-          'border-border overflow-hidden border-t transition-all duration-200 md:hidden',
-          mobileOpen ? 'max-h-60' : 'max-h-0 border-t-0'
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="border-border/50 overflow-hidden border-t md:hidden"
+          >
+            <div className="flex flex-col gap-2 px-6 py-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
         )}
-      >
-        <div className="flex flex-col gap-2 px-6 py-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </div>
+      </AnimatePresence>
     </header>
   )
 }
