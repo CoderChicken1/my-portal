@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
+import { ThemeProvider } from '@/components/shared/theme-provider'
+import { Header } from '@/components/shared/header'
+import { Footer } from '@/components/shared/footer'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -27,7 +30,11 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
-        {children}
+        <ThemeProvider>
+          <Header />
+          <main className="min-h-[calc(100vh-8rem)]">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
