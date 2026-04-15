@@ -11,7 +11,7 @@ import {
   HamburgerMenuIcon,
   Cross1Icon,
 } from '@radix-ui/react-icons'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/shared/ui'
 import { cn } from '@/lib/utils'
 
 const navLinks = [

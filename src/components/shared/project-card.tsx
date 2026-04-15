@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { GitHubLogoIcon, ExternalLinkIcon } from '@radix-ui/react-icons'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/shared/ui'
 import type { Project } from '@/types'
 
 export function ProjectCard({ project }: { project: Project }) {
