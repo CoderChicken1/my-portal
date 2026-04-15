@@ -12,7 +12,7 @@ import {
   Cross1Icon,
 } from '@radix-ui/react-icons'
 import { Button } from '@/shared/ui'
-import { cn } from '@/lib/utils'
+import { cn } from '@/shared/lib/utils'
 
 const navLinks = [
   { label: 'Home', href: '/' },
