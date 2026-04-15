@@ -1,15 +1,20 @@
-import { Button } from '@/components/ui/button'
+import { HeroSection } from './_components/hero-section'
+import { SkillsSection } from './_components/skills-section'
+import { ProjectsSection } from './_components/projects-section'
+import { ContactSection } from './_components/contact-section'
 
+/**
+ * Trang chủ — Page chỉ đóng vai trò "dây dẫn" (wire-up).
+ * Nó import các Section Components và ráp chúng theo đúng thứ tự.
+ * Không có business logic nào ở đây.
+ */
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
-      <h1 className="text-4xl font-bold">My Portal</h1>
-      <div className="flex gap-3">
-        <Button>Default</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="link">Link</Button>
-      </div>
-    </main>
+    <>
+      <HeroSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ContactSection />
+    </>
   )
 }

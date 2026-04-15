@@ -23,6 +23,8 @@
 # misc
 .DS_Store
 *.pem
+Thumbs.db
+desktop.ini
 
 # debug
 npm-debug.log*
@@ -39,3 +41,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ========== AI Agent / IDE configs (local only) ==========
+.agents/
+.claude/
+.antigravity-install-manifest.json
+
+# ========== Security & Sensitive files ==========
+security-findings-*.csv
+*.key
+*.cert
+credentials.json
+serviceAccountKey.json
+
+# ========== IDE ==========
+.idea/
+*.iml
+.project
+*.swp
+*.swo
+
