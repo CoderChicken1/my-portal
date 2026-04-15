@@ -24,7 +24,7 @@
 .DS_Store
 *.pem
 Thumbs.db
-Desktop.ini
+desktop.ini
 
 # editors
 .vscode/*
@@ -52,5 +52,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# claude code
+# ========== AI Agent configs (local only) ==========
+.agents/
 .claude/
+.antigravity-install-manifest.json
+
+# ========== Security & Sensitive files ==========
+security-findings-*.csv
+*.key
+*.cert
+credentials.json
+serviceAccountKey.json

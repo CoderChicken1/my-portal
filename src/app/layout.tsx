@@ -1,22 +1,21 @@
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { ThemeProvider } from '@/components/shared/theme-provider'
-import { Header } from '@/components/shared/header'
-import { Footer } from '@/components/shared/footer'
+import { siteConfig } from '@/shared/config/site'
+import { Navbar, Footer } from '@/shared/layouts'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Johan — Fullstack Engineer',
-    template: '%s | Johan',
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: 'Fullstack JavaScript engineer. I build things for the web.',
+  description: siteConfig.description,
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://yourdomain.com',
-    siteName: 'Johan',
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
   },
 }
 
@@ -30,11 +29,9 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider>
-          <Header />
-          <main className="min-h-[calc(100vh-8rem)]">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   )
