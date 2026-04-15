@@ -26,6 +26,15 @@
 Thumbs.db
 desktop.ini
 
+# editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -34,6 +43,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -42,7 +52,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# ========== AI Agent / IDE configs (local only) ==========
+# ========== AI Agent configs (local only) ==========
 .agents/
 .claude/
 .antigravity-install-manifest.json
@@ -53,11 +63,3 @@ security-findings-*.csv
 *.cert
 credentials.json
 serviceAccountKey.json
-
-# ========== IDE ==========
-.idea/
-*.iml
-.project
-*.swp
-*.swo
-
