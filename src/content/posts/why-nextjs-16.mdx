@@ -1,0 +1,34 @@
+---
+title: Notes on Next.js 16
+description: A few things that surprised me while upgrading to Next.js 16.
+publishedAt: 2026-04-15
+published: true
+tags: [nextjs, react]
+---
+
+Next.js 16 brings a handful of breaking changes. Here are the ones I hit first.
+
+## `params` is a Promise
+
+Dynamic route params are now async. You `await` them:
+
+```tsx
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  return <div>{slug}</div>
+}
+```
+
+## Turbopack is the default
+
+Dev and build both run on Turbopack by default. No extra config.
+
+## Read the docs in your `node_modules`
+
+Your training data probably predates some of these changes. The canonical
+reference sits right in `node_modules/next/dist/docs/`. Read it before
+guessing.
