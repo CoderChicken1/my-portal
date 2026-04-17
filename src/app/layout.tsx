@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { siteConfig } from '@/shared/config/site'
-import { Navbar, Footer } from '@/shared/layouts'
+import { Navbar, Footer, ThemeProvider } from '@/shared/layouts'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -29,9 +29,11 @@ export default function RootLayout({
       <body
         className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
       >
-        <Navbar />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
