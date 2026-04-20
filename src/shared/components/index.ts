@@ -1,4 +1,3 @@
-export { Footer } from './footer'
 export {
   FadeUp,
   FadeIn,
@@ -7,4 +6,3 @@ export {
   HoverScale,
 } from './motion'
 export { Spotlight } from './spotlight'
-export { ProjectCard } from './project-card'

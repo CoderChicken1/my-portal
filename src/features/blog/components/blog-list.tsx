@@ -1,8 +1,4 @@
-import {
-  FadeUp,
-  StaggerContainer,
-  StaggerItem,
-} from '@/components/shared/motion'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/shared/components'
 import { getAllPosts } from '../actions/get-posts'
 import { BlogCard } from './blog-card'
 

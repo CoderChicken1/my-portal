@@ -5,11 +5,7 @@
  */
 
 // Components
-// export { ProjectCard } from './components/project-card'
-// export { ProjectGrid } from './components/project-grid'
+export { ProjectCard } from './components/project-card'
 
 // Types
 export type { Project } from './types'
-
-// Actions
-// export { getAllProjects } from './actions/get-projects'
