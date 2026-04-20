@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { FadeUp } from '@/components/shared/motion'
+import { FadeUp } from '@/shared/components'
 import type { BlogPost } from '../types'
 
 type BlogPostProps = {

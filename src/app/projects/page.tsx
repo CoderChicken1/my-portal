@@ -1,11 +1,6 @@
 import type { Metadata } from 'next'
-import {
-  FadeUp,
-  StaggerContainer,
-  StaggerItem,
-} from '@/components/shared/motion'
-import { ProjectCard } from '@/components/shared/project-card'
-import type { Project } from '@/types'
+import { FadeUp, StaggerContainer, StaggerItem } from '@/shared/components'
+import { ProjectCard, type Project } from '@/features/projects'
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -14,36 +9,44 @@ export const metadata: Metadata = {
 
 const projects: Project[] = [
   {
+    slug: 'project-alpha',
     title: 'Project Alpha',
     description:
       'A full-stack SaaS application with authentication, payments, and real-time features built with Next.js and PostgreSQL.',
-    tech: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Stripe'],
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    techStack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Stripe'],
+    repoUrl: 'https://github.com',
+    demoUrl: 'https://example.com',
+    featured: true,
   },
   {
+    slug: 'project-beta',
     title: 'Project Beta',
     description:
       'An open-source CLI tool for automating development workflows and deployments across multiple environments.',
-    tech: ['Node.js', 'TypeScript', 'Docker', 'AWS'],
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    techStack: ['Node.js', 'TypeScript', 'Docker', 'AWS'],
+    repoUrl: 'https://github.com',
+    demoUrl: 'https://example.com',
+    featured: false,
   },
   {
+    slug: 'project-gamma',
     title: 'Project Gamma',
     description:
       'A real-time collaborative editor with WebSocket support, rich text editing, and version history.',
-    tech: ['React', 'Node.js', 'WebSocket', 'Redis'],
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    techStack: ['React', 'Node.js', 'WebSocket', 'Redis'],
+    repoUrl: 'https://github.com',
+    demoUrl: 'https://example.com',
+    featured: false,
   },
   {
+    slug: 'project-delta',
     title: 'Project Delta',
     description:
       'A mobile-first e-commerce platform with product search, filtering, cart management, and checkout flow.',
-    tech: ['Next.js', 'Tailwind CSS', 'Stripe', 'Prisma'],
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    techStack: ['Next.js', 'Tailwind CSS', 'Stripe', 'Prisma'],
+    repoUrl: 'https://github.com',
+    demoUrl: 'https://example.com',
+    featured: false,
   },
 ]
 
@@ -62,7 +65,7 @@ export default function ProjectsPage() {
 
       <StaggerContainer className="grid gap-6 sm:grid-cols-2">
         {projects.map((project) => (
-          <StaggerItem key={project.title}>
+          <StaggerItem key={project.slug}>
             <ProjectCard project={project} />
           </StaggerItem>
         ))}
